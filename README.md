@@ -14,6 +14,6 @@ This is the setup repo for Soltech's firms 3D printer, Voron v.2.4r2 300^3mm
 ## Flashing the firmware
 
 Good Commands to remmber, after you run the make config file. Istead of useing winscp to get the file, write the following cmd in the klipper directory:
-´´´
+´´´c
 cp out/klipper.bin ../klipper_config/firmware.bin
 ´´´
