@@ -1,0 +1,37 @@
+# To SSH in to the pi, hostname: Soltech3D
+hostname -I
+hostname: Soltech3D
+10.0.10.157
+login: pi
+password: Soltech3D
+
+#----------------- Create Firmware ---------
+cd ~/klipper_config
+make menuconfig
+make
+cp out/klipper.bin ../klipper_config/firmware.bin
+
+#---------------- Initial startup checks-----
+https://docs.vorondesign.com/build/startup/
+STEPPER_BUZZ STEPPER=stepper_x
+stepper_x
+stepper_y
+stepper_z
+stepper_z1
+stepper_z2
+stepper_z3
+extruder
+
+QUERY_PROBE, PROBE_ACCURACY
+QUERY_ENDSTOPS
+
+PID tuning 
+Hotend:
+M106 S64
+PID_CALIBRATE HEATER=extruder TARGET=245
+SAVE_CONFIG
+
+BED:
+G0 x150 y150 z10
+PID_CALIBRATE HEATER=heater_bed TARGET=100
+SAVE_CONFIG
